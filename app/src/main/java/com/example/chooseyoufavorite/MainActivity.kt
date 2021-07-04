@@ -1,18 +1,22 @@
 package com.example.chooseyoufavorite
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.chooseyoufavorite.ui.main.MainFragment
+import androidx.fragment.app.FragmentActivity
+import androidx.viewpager2.widget.ViewPager2
 
-class MainActivity : AppCompatActivity() {
+
+
+class MainActivity : FragmentActivity() {
+
+    private lateinit var adapter: NumberAdapter
+    private lateinit var viewPager: ViewPager2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity)
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, MainFragment.newInstance())
-                    .commitNow()
-        }
+        setContentView(R.layout.activity_main)
+
+        adapter = NumberAdapter(this)
+        viewPager = findViewById(R.id.pager)
+        viewPager.adapter = adapter
     }
 }
