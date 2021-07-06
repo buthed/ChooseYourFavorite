@@ -4,12 +4,25 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string-array name="categories">
-        <item>Cinema</item>
+        <item>Movies</item>
         <item>Music</item>
+        <item>Sport</item>
+        <item>Memes</item>
+        <item>World</item>
+        <item>Other</item>
+        <item>Top 100</item>
     </string-array>
     <drawable name="categories_icons">
         <item>R.drawable.icon_movie_category</item>
         <item>R.drawable.icon_music_category</item>
+        <item>R.drawable.icon_music_category</item>
     </drawable>
+
+    //categories lists
+    <string-array name="cinema_category">
+        <item>One</item>
+        <item>Two</item>
+        <item>Three</item>
+    </string-array>
 </resources>
 

@@ -1,9 +1,11 @@
-package com.example.chooseyoufavorite
+package com.example.chooseyoufavorite.View.Adapters
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.chooseyoufavorite.ARG_OBJECT
+import com.example.chooseyoufavorite.NumberFragment
 
 class NumberAdapter(fragment: FragmentActivity) : FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int = 2
