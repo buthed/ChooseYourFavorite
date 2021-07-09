@@ -3,7 +3,7 @@ package com.example.chooseyoufavorite.View.Adapters
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.chooseyoufavorite.MainActivity
-import com.example.chooseyoufavorite.View.Fragments.Movies
+import com.example.chooseyoufavorite.View.Fragments.MoviesFragment
 import com.example.chooseyoufavorite.View.Fragments.FragmentThree
 import com.example.chooseyoufavorite.View.Fragments.FragmentTwo
 
@@ -19,7 +19,7 @@ class MyAdapter(mainActivity: MainActivity) : FragmentStateAdapter(mainActivity)
 
         when (position) {
             0 -> {
-                return Movies()
+                return MoviesFragment()
             }
             1 -> {
                 return FragmentTwo()
@@ -28,6 +28,6 @@ class MyAdapter(mainActivity: MainActivity) : FragmentStateAdapter(mainActivity)
                 return FragmentThree()
             }
         }
-        return Movies()
+        return MoviesFragment()
     }
 }
