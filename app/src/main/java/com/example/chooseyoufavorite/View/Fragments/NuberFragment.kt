@@ -1,26 +1,30 @@
 package com.example.chooseyoufavorite.View.Fragments
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import android.widget.TextView
 import com.example.chooseyoufavorite.Models.AppState
 import com.example.chooseyoufavorite.Models.CategoryList
 import com.example.chooseyoufavorite.R
 import com.example.chooseyoufavorite.View.Adapters.CategoryListAdapter
+import com.example.chooseyoufavorite.View.Fragments.MoviesFragment
 import com.example.chooseyoufavorite.ViewModel.MovieViewModel
 import com.example.chooseyoufavorite.databinding.FragmentMoviesBinding
 import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-const val ARG_OBJECT = "object"
 
-class MoviesFragment : Fragment() {
+
+class NumberFragment : Fragment() {
     private lateinit var binding: FragmentMoviesBinding
     private val viewModel: MovieViewModel by viewModel()
     private var adapter: CategoryListAdapter? = null
 
+
+    private var category: String = "movie"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,21 +34,21 @@ class MoviesFragment : Fragment() {
         return binding.root
     }
 
-
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.recyclerViewMovies.adapter = adapter
-        viewModel.getLiveData().observe(viewLifecycleOwner, { renderData(it) })
-        viewModel.getCinemaList()
+        arguments?.takeIf { it.containsKey(ARG_OBJECT) }?.apply {
+            val tabNames1 = resources.getStringArray(R.array.categories)
+            binding.recyclerViewMovies.adapter = adapter
+            binding.textView.text = tabNames1[getInt(ARG_OBJECT)]
+            viewModel.getLiveData().observe(viewLifecycleOwner, { renderData(it) })
+            viewModel.getCinemaList()
+        }
     }
 
     private fun renderData(appState: AppState) = with(binding){
         when (appState) {
             is AppState.Success -> {
                 loadingLayout.visibility = View.GONE
-                adapter = CategoryListAdapter(object : OnItemViewClickListener {
+                adapter = CategoryListAdapter(object : MoviesFragment.OnItemViewClickListener {
                     override fun onItemViewClick(category: CategoryList) {
                         val manager = activity?.supportFragmentManager
                         manager?.let { manager ->
@@ -93,5 +97,4 @@ class MoviesFragment : Fragment() {
             return fragment
         }
     }
-
 }

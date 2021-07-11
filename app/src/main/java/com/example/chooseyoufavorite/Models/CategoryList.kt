@@ -17,7 +17,12 @@ fun getCategoryList(): List<CategoryList> {
     return listOf(
         CategoryList(1, "movie", "Top 250", "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/hUwvcDAZG0nbVQokqZh1oQt8Cpm.jpg", "2"),
         CategoryList(2, "movie", "Top 3", "1", "2"),
-        CategoryList(3, "movie", "Top 4", "1", "2"),
+        CategoryList(3, "movie", "Top 4", "1", "2")
+    )
+}
+
+fun getCategoryListMusic(): List<CategoryList> {
+    return listOf(
         CategoryList(4, "music", "Top 5", "1", "2")
     )
 }
