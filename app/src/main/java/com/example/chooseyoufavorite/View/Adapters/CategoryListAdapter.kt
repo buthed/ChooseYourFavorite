@@ -1,6 +1,6 @@
 package com.example.chooseyoufavorite.View.Adapters
 
-import android.media.Image
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,14 +10,12 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chooseyoufavorite.Models.CategoryList
 import com.example.chooseyoufavorite.R
-import com.example.chooseyoufavorite.View.Fragments.MoviesFragment
-import com.example.chooseyoufavorite.databinding.FragmentMoviesBinding
+import com.example.chooseyoufavorite.View.Fragments.MainFragment
 import com.squareup.picasso.Picasso
 
-import java.util.*
-
 class CategoryListAdapter(private var itemClickListener:
-                          MoviesFragment.OnItemViewClickListener?) :
+                          MainFragment.OnItemViewClickListener
+) :
     RecyclerView.Adapter<CategoryListAdapter.MainViewHolder>() {
 
     private var categoryData: List<CategoryList> = listOf()
@@ -50,11 +48,7 @@ class CategoryListAdapter(private var itemClickListener:
             val urlPoster: String = category.backdrop_path.toString()
             Picasso.get().load(urlPoster).into(itemView.findViewById<ImageView>(R.id.itemBanner))
             itemView.setOnClickListener {
-                Toast.makeText(
-                    itemView.context,
-                    category.name,
-                    Toast.LENGTH_LONG
-                ).show()
+                Log.d("Card","clicked!")
             }
         }
     }

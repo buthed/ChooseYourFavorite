@@ -4,18 +4,17 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.chooseyoufavorite.View.Fragments.ARG_OBJECT
-import com.example.chooseyoufavorite.View.Fragments.NumberFragment
+import com.example.chooseyoufavorite.ARG_OBJECT
+import com.example.chooseyoufavorite.View.Fragments.MainFragment
 
-class NumberAdapter(fragment: FragmentActivity) : FragmentStateAdapter(fragment) {
+class MainAdapter(fragment: FragmentActivity) : FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int = 7
 
     override fun createFragment(position: Int): Fragment {
-        val fragment = NumberFragment()
+        val fragment = MainFragment()
         fragment.arguments = Bundle().apply {
             putInt(ARG_OBJECT, position + 1)
         }
         return fragment
     }
-
 }

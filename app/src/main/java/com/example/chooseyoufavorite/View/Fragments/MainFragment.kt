@@ -1,58 +1,63 @@
 package com.example.chooseyoufavorite.View.Fragments
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import com.example.chooseyoufavorite.ARG_OBJECT
 import com.example.chooseyoufavorite.Models.AppState
 import com.example.chooseyoufavorite.Models.CategoryList
 import com.example.chooseyoufavorite.R
 import com.example.chooseyoufavorite.View.Adapters.CategoryListAdapter
-import com.example.chooseyoufavorite.ViewModel.MovieViewModel
-import com.example.chooseyoufavorite.databinding.FragmentMoviesBinding
+import com.example.chooseyoufavorite.ViewModel.MainViewModel
+import com.example.chooseyoufavorite.databinding.FragmentMainBinding
 import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-const val ARG_OBJECT = "object"
 
-class MoviesFragment : Fragment() {
-    private lateinit var binding: FragmentMoviesBinding
-    private val viewModel: MovieViewModel by viewModel()
+
+class MainFragment : Fragment() {
+    private lateinit var binding: FragmentMainBinding
+    private val viewModel: MainViewModel by viewModel()
     private var adapter: CategoryListAdapter? = null
-
+    private var currentCategory: String = "Movie"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMoviesBinding.inflate(inflater, container, false)
+        binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.recyclerViewMovies.adapter = adapter
-        viewModel.getLiveData().observe(viewLifecycleOwner, { renderData(it) })
-        viewModel.getCinemaList()
+        arguments?.takeIf { it.containsKey(ARG_OBJECT) }?.apply {
+            val tabNames = resources.getStringArray(R.array.categories)
+            binding.recyclerViewMovies.adapter = adapter
+            binding.textView.text = ARG_OBJECT
+            binding.textView.text = tabNames[getInt(ARG_OBJECT)-1]
+            currentCategory = tabNames[getInt(ARG_OBJECT)-1]
+            viewModel.getLiveData().observe(viewLifecycleOwner, { renderData(it) })
+            viewModel.getCinemaList(currentCategory)
+        }
     }
+
+
 
     private fun renderData(appState: AppState) = with(binding){
         when (appState) {
             is AppState.Success -> {
                 loadingLayout.visibility = View.GONE
-                adapter = CategoryListAdapter(object : OnItemViewClickListener {
+                adapter = CategoryListAdapter(object : MainFragment.OnItemViewClickListener {
                     override fun onItemViewClick(category: CategoryList) {
                         val manager = activity?.supportFragmentManager
                         manager?.let { manager ->
                             val bundle = Bundle().apply {
-                                putParcelable(MoviesFragment.BUNDLE_EXTRA, category)
+                                putParcelable(MainFragment.BUNDLE_EXTRA, category)
                             }
                             manager.beginTransaction()
-                                .add(R.id.container, MoviesFragment.newInstance(bundle))
+                                .add(R.id.container, MainFragment.newInstance(bundle))
                                 .addToBackStack("")
                                 .commitAllowingStateLoss()
                         }
@@ -70,7 +75,7 @@ class MoviesFragment : Fragment() {
                 loadingLayout.visibility = View.GONE
                 Snackbar
                     .make(binding.recyclerViewMovies, getString(R.string.error), Snackbar.LENGTH_INDEFINITE)
-                    .setAction("Reload") { viewModel.getCinemaList() }
+                    .setAction("Reload") { viewModel.getCinemaList("Music") }
                     .show()
             }
         }
@@ -87,11 +92,10 @@ class MoviesFragment : Fragment() {
     companion object {
         const val BUNDLE_EXTRA = "category"
 
-        fun newInstance(bundle: Bundle): MoviesFragment {
-            val fragment = MoviesFragment()
+        fun newInstance(bundle: Bundle): MainFragment {
+            val fragment = MainFragment()
             fragment.arguments = bundle
             return fragment
         }
     }
-
 }
