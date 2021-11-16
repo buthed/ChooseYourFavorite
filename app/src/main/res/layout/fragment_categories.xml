@@ -3,25 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.CategoriesFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.categories.CategoriesFragment"
     android:id="@+id/frameCat">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewCategories"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"/>
 
-    <Button
-        android:id="@+id/btn_1"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="0.0dip"
-        android:layout_height="45dp"
-        android:layout_marginLeft="2dp"
-        android:layout_weight="1.0"
-        android:gravity="center_horizontal|center_vertical"
-        android:onClick="insertIntoDb"
-        android:text="SALVA"
-        android:textColor="#ffffff"
-        android:textSize="16sp" />
 </FrameLayout>
