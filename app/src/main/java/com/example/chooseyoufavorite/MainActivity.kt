@@ -1,32 +1,38 @@
 package com.example.chooseyoufavorite
 
 import android.os.Bundle
-import androidx.fragment.app.FragmentActivity
-import androidx.viewpager2.widget.ViewPager2
-import com.example.chooseyoufavorite.View.Adapters.MainAdapter
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.example.chooseyoufavorite.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
-const val ARG_OBJECT = "object"
+class MainActivity : AppCompatActivity() {
 
-class MainActivity : FragmentActivity() {
-
-    private lateinit var adapter: MainAdapter
-    private lateinit var viewPager: ViewPager2
-    private lateinit var tabLayout: TabLayout
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding =  ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        if(savedInstanceState==null){
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.container, HomeFragment.newInstance())
+                .commit()
+        }
 
-        val tabNames = resources.getStringArray(R.array.categories)
-        adapter = MainAdapter(this)
-        viewPager = findViewById(R.id.view_pager)
-        viewPager.adapter = adapter
-
-        tabLayout = findViewById(R.id.tab_layout)
-        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = tabNames[position]
-        }.attach()
+        //Initialize the bottom navigation view
+        //Create bottom navigation view object
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        val navController = findNavController(R.id.container)
+        val appBarConfiguration = AppBarConfiguration(setOf(
+            R.id.navHome,
+            R.id.navCategories,
+            R.id.navHome))
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        bottomNavigationView.setupWithNavController(navController)
     }
 }
