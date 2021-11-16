@@ -1,7 +1,9 @@
 package com.example.chooseyoufavorite.room.categories.top250Movies
 
+import androidx.room.Dao
 import androidx.room.Query
 
+@Dao
 interface Top250MoviesDao {
 
     @Query("SELECT * FROM Top250MoviesEntity")
