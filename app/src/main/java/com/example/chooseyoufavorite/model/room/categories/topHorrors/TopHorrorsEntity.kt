@@ -1,4 +1,4 @@
-package com.example.chooseyoufavorite.room.categories.topHorrors
+package com.example.chooseyoufavorite.model.room.categories.topHorrors
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
