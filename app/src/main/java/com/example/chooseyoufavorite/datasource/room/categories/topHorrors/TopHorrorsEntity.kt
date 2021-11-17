@@ -1,10 +1,10 @@
-package com.example.chooseyoufavorite.room.categories.top250Movies
+package com.example.chooseyoufavorite.datasource.room.categories.topHorrors
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class Top250MoviesEntity(
+data class TopHorrorsEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long,
     val movie_id: Int?,

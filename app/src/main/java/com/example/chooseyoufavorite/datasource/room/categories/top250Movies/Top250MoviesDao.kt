@@ -1,4 +1,4 @@
-package com.example.chooseyoufavorite.room.categories.top250Movies
+package com.example.chooseyoufavorite.datasource.room.categories.top250Movies
 
 import androidx.room.Dao
 import androidx.room.Query

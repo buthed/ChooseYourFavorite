@@ -9,13 +9,10 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.chooseyoufavorite.view.HomeFragment
 import com.example.chooseyoufavorite.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var mDatabase: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +41,6 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         bottomNavigationView.setupWithNavController(navController)
-        //Initialize Firebase
-        mDatabase = FirebaseDatabase.getInstance().getReference()
     }
+
 }
