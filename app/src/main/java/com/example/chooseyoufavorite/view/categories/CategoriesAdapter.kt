@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chooseyoufavorite.R
+import com.example.chooseyoufavorite.view.HomeFragment
 
 class CategoriesAdapter(private val names: List<String>) :
     RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>() {
@@ -34,4 +35,5 @@ class CategoriesAdapter(private val names: List<String>) :
 
     override fun getItemCount() = names.size
 
+//TODO: Add Binding for Adapter
 }
