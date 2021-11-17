@@ -4,6 +4,7 @@ import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.recyclerview.widget.RecyclerView
 import com.example.chooseyoufavorite.R
 import com.example.chooseyoufavorite.ViewBindingFragment
 import com.example.chooseyoufavorite.databinding.FragmentCategoriesBinding
@@ -17,21 +18,19 @@ import com.google.firebase.ktx.Firebase
 
 class CategoriesFragment : ViewBindingFragment<FragmentCategoriesBinding>(FragmentCategoriesBinding::inflate) {
 
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val textView = binding.textView1
+        val recyclerView: RecyclerView = binding.recyclerViewCategories
+        recyclerView.adapter = CategoriesAdapter(getCategoryList())
+
         val database = Firebase.database
         val myRef = database.getReference("Movies")
-
         myRef.addValueEventListener(object: ValueEventListener {
-
             override fun onDataChange(snapshot: DataSnapshot) {
-                val value: String = (snapshot.getValue().toString()) as String
+                val value: String = (snapshot.getValue()).toString()
                 textView.setText(value)
             }
-
             override fun onCancelled(error: DatabaseError) {
                 Log.w(TAG, "Failed to read value.", error.toException())
             }
