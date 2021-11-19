@@ -6,6 +6,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.room.Room
 import com.example.chooseyoufavorite.view.HomeFragment
 import com.example.chooseyoufavorite.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView

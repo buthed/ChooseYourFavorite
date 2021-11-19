@@ -1,4 +1,4 @@
-package com.example.chooseyoufavorite
+package com.example.chooseyoufavorite.utilities
 
 import android.os.Bundle
 import android.view.LayoutInflater

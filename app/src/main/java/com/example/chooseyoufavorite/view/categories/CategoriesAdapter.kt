@@ -3,37 +3,39 @@ package com.example.chooseyoufavorite.view.categories
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chooseyoufavorite.R
-import com.example.chooseyoufavorite.view.HomeFragment
+import com.example.chooseyoufavorite.data.room.categories.CategoriesEntity
+import kotlinx.android.synthetic.main.fragment_categories_item.view.*
 
-class CategoriesAdapter(private val names: List<String>) :
-    RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>() {
 
-    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var largeTextView: TextView? = null
-        var smallTextView: TextView? = null
+class CategoriesAdapter: RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>() {
 
-        init {
-            largeTextView = itemView.findViewById(R.id.textViewLarge)
-            smallTextView = itemView.findViewById(R.id.textViewSmall)
-        }
-    }
+    private var categoriesList = emptyList<CategoriesEntity>()
+
+    class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView =
-            LayoutInflater.from(parent.context)
-                .inflate(R.layout.categories_recyclerview_item, parent, false)
-        return MyViewHolder(itemView)
+        return MyViewHolder(LayoutInflater
+            .from(parent.context)
+            .inflate(R.layout.fragment_categories_item, parent, false))
     }
+
+    override fun getItemCount() = categoriesList.size
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.largeTextView?.text = names[position]
-        holder.smallTextView?.text = "кот"
+        val currentItem = categoriesList[position]
+        holder.itemView.id_txt.text = currentItem.id.toString()
+        holder.itemView.firstName_txt.text = currentItem.categories_type
+        holder.itemView.lastName_txt.text = currentItem.name
+        holder.itemView.age_txt.text = currentItem.name.toString()
+
     }
 
-    override fun getItemCount() = names.size
+    fun setData(categories: List<CategoriesEntity>){
+        this.categoriesList = categories
+        notifyDataSetChanged()
+    }
 
-//TODO: Add Binding for Adapter
 }
