@@ -11,7 +11,7 @@
         android:label="HomePage" />
     <fragment
         android:id="@+id/navCategories"
-        android:name="com.example.chooseyoufavorite.view.categories.CategoriesFragment"
+        android:name="com.example.chooseyoufavorite.view.categories.CategoriesTypeFragment"
         android:label="Categories"
         tools:layout="@layout/fragment_categories" />
     <fragment

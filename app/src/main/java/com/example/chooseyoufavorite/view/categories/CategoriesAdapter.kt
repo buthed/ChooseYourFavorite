@@ -7,12 +7,13 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chooseyoufavorite.R
 import com.example.chooseyoufavorite.data.room.categories.CategoriesEntity
+import com.example.chooseyoufavorite.data.room.categories.CategoriesTypeEntity
 import kotlinx.android.synthetic.main.fragment_categories_item.view.*
 
 
 class CategoriesAdapter: RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>() {
 
-    private var categoriesList = emptyList<CategoriesEntity>()
+    private var categoriesList = emptyList<CategoriesTypeEntity>()
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {}
 
@@ -27,14 +28,12 @@ class CategoriesAdapter: RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>() 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = categoriesList[position]
         holder.itemView.id_txt.text = currentItem.id.toString()
-        holder.itemView.firstName_txt.text = currentItem.categories_type
-        holder.itemView.lastName_txt.text = currentItem.name
-        holder.itemView.age_txt.text = currentItem.name.toString()
+        holder.itemView.title_txt.text = currentItem.type_of_category
 
     }
 
-    fun setData(categories: List<CategoriesEntity>){
-        this.categoriesList = categories
+    fun setData(categories_type: List<CategoriesTypeEntity>){
+        this.categoriesList = categories_type
         notifyDataSetChanged()
     }
 

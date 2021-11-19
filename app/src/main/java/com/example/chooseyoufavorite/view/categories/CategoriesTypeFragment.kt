@@ -8,17 +8,17 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chooseyoufavorite.R
 import com.example.chooseyoufavorite.utilities.ViewBindingFragment
 import com.example.chooseyoufavorite.databinding.FragmentCategoriesBinding
 import com.example.chooseyoufavorite.view.HomeFragment
+import com.example.chooseyoufavorite.viewmodel.CategoriesTypeViewModel
 import com.example.chooseyoufavorite.viewmodel.CategoriesViewModel
 
-class CategoriesFragment : ViewBindingFragment<FragmentCategoriesBinding>(FragmentCategoriesBinding::inflate) {
+class CategoriesTypeFragment : ViewBindingFragment<FragmentCategoriesBinding>(FragmentCategoriesBinding::inflate) {
 
-    private lateinit var categoriesViewModel: CategoriesViewModel
+    private lateinit var categoriesTypeViewModel: CategoriesTypeViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -27,11 +27,10 @@ class CategoriesFragment : ViewBindingFragment<FragmentCategoriesBinding>(Fragme
         val adapter = CategoriesAdapter()
         val recyclerView: RecyclerView = binding.recyclerview
         recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
         // UserViewModel
-        categoriesViewModel = ViewModelProvider(this).get(CategoriesViewModel::class.java)
-        categoriesViewModel.readAllData.observe(viewLifecycleOwner, Observer { user ->
-            adapter.setData(user)
+        categoriesTypeViewModel = ViewModelProvider(this).get(CategoriesTypeViewModel::class.java)
+        categoriesTypeViewModel.readAllData.observe(viewLifecycleOwner, Observer { categoriesType ->
+            adapter.setData(categoriesType)
         })
     }
 
