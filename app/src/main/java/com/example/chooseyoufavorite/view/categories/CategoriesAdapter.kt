@@ -26,8 +26,8 @@ class CategoriesAdapter: RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>() 
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = categoriesList[position]
-        holder.itemView.id_txt.text = currentItem.id.toString()
-        holder.itemView.title_txt.text = currentItem.categories_type
+        holder.itemView.id_txt.text = currentItem.categories_type
+        holder.itemView.title_txt.text = currentItem.name
 
         holder.itemView.rowLayout.setOnClickListener {
             Log.d("Adapter", "Click")

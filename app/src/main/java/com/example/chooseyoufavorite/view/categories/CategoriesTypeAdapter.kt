@@ -36,7 +36,7 @@ class CategoriesTypeAdapter: RecyclerView.Adapter<CategoriesTypeAdapter.MyViewHo
             holder.itemView.rowLayout.setOnClickListener {
                 holder.itemView.findNavController().navigate(
                     R.id.navCategories,
-                    bundleOf()
+                    bundleOf(CategoriesFragment.categoryKey to position.toString())
                 )
             }
         }
