@@ -12,11 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.chooseyoufavorite.R
 import com.example.chooseyoufavorite.utilities.ViewBindingFragment
 import com.example.chooseyoufavorite.databinding.FragmentCategoriesBinding
+import com.example.chooseyoufavorite.databinding.FragmentCategoriesTypeBinding
 import com.example.chooseyoufavorite.view.HomeFragment
 import com.example.chooseyoufavorite.viewmodel.CategoriesTypeViewModel
 import com.example.chooseyoufavorite.viewmodel.CategoriesViewModel
 
-class CategoriesTypeFragment : ViewBindingFragment<FragmentCategoriesBinding>(FragmentCategoriesBinding::inflate) {
+class CategoriesTypeFragment : ViewBindingFragment<FragmentCategoriesTypeBinding>(FragmentCategoriesTypeBinding::inflate) {
 
     private lateinit var categoriesTypeViewModel: CategoriesTypeViewModel
 
@@ -25,7 +26,7 @@ class CategoriesTypeFragment : ViewBindingFragment<FragmentCategoriesBinding>(Fr
 
         // Recyclerview
         val adapter = CategoriesAdapter()
-        val recyclerView: RecyclerView = binding.recyclerview
+        val recyclerView: RecyclerView = binding.recyclerviewCategoryType
         recyclerView.adapter = adapter
         // UserViewModel
         categoriesTypeViewModel = ViewModelProvider(this).get(CategoriesTypeViewModel::class.java)

@@ -13,7 +13,7 @@
         android:id="@+id/navCategories"
         android:name="com.example.chooseyoufavorite.view.categories.CategoriesTypeFragment"
         android:label="Categories"
-        tools:layout="@layout/fragment_categories" />
+        tools:layout="@layout/fragment_categories_type" />
     <fragment
         android:id="@+id/navProfile"
         android:name="com.example.chooseyoufavorite.view.ProfileFragment"

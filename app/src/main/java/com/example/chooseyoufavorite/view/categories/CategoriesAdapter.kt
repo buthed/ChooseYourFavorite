@@ -1,5 +1,6 @@
 package com.example.chooseyoufavorite.view.categories
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,6 +31,11 @@ class CategoriesAdapter: RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>() 
         holder.itemView.id_txt.text = currentItem.id.toString()
         holder.itemView.title_txt.text = currentItem.type_of_category
 
+        holder.itemView.rowLayout.setOnClickListener {
+            Log.d("Adapter", "Click")
+            holder.itemView.rowLayout.setOnClickListener {
+            }
+        }
     }
 
     fun setData(categories_type: List<CategoriesTypeEntity>){
