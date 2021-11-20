@@ -6,8 +6,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.chooseyoufavorite.view.HomeFragment
 import com.example.chooseyoufavorite.databinding.ActivityMainBinding
+import com.example.chooseyoufavorite.view.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navHome,
-                R.id.navCategories,
+                R.id.navCategoriesType,
                 R.id.navHome
             )
         )

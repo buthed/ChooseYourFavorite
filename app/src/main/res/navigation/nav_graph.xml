@@ -10,12 +10,20 @@
         android:name="com.example.chooseyoufavorite.view.HomeFragment"
         android:label="HomePage" />
     <fragment
-        android:id="@+id/navCategories"
-        android:name="com.example.chooseyoufavorite.view.categories.CategoriesFragment"
-        android:label="Categories"
-        tools:layout="@layout/fragment_categories" />
+        android:id="@+id/navCategoriesType"
+        android:name="com.example.chooseyoufavorite.view.categories.CategoriesTypeFragment"
+        android:label="CategoriesType"
+        tools:layout="@layout/fragment_categories_type" >
+        <action
+            android:id="@+id/action_navCategoriesType_to_navCategories"
+            app:destination="@id/navCategories" />
+    </fragment>
     <fragment
         android:id="@+id/navProfile"
         android:name="com.example.chooseyoufavorite.view.ProfileFragment"
         android:label="Profile" />
+    <fragment
+        android:id="@+id/navCategories"
+        android:name="com.example.chooseyoufavorite.view.categories.CategoriesFragment"
+        android:label="Categories" />
 </navigation>
