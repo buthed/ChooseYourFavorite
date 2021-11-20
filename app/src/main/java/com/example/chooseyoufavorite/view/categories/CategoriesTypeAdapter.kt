@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.fragment_categories_item.view.*
 
 class CategoriesTypeAdapter: RecyclerView.Adapter<CategoriesTypeAdapter.MyViewHolder>() {
 
+    private val TAG = "LOGTYPE"
     private var categoriesList = emptyList<CategoriesTypeEntity>()
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {}
@@ -32,7 +33,7 @@ class CategoriesTypeAdapter: RecyclerView.Adapter<CategoriesTypeAdapter.MyViewHo
         holder.itemView.title_txt.text = currentItem.type_of_category
 
         holder.itemView.rowLayout.setOnClickListener {
-            Log.d("Adapter", "Click")
+            Log.e(TAG, "Click")
             holder.itemView.rowLayout.setOnClickListener {
                 holder.itemView.findNavController().navigate(
                     R.id.navCategories,

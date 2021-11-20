@@ -30,7 +30,7 @@ class CategoriesAdapter: RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>() 
         holder.itemView.title_txt.text = currentItem.name
 
         holder.itemView.rowLayout.setOnClickListener {
-            Log.d("Adapter", "Click")
+
             holder.itemView.rowLayout.setOnClickListener {
             }
         }
