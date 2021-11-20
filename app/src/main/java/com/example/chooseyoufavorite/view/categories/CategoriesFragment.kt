@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProvider.Factory
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chooseyoufavorite.databinding.FragmentCategoriesBinding
 import com.example.chooseyoufavorite.utilities.ViewBindingFragment
@@ -15,11 +16,14 @@ class CategoriesFragment : ViewBindingFragment<FragmentCategoriesBinding>(Fragme
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.mainCategory.text = arguments?.getString(categoryKey) ?: String()
+
 
         // Recyclerview
         val adapter = CategoriesAdapter()
         val recyclerView: RecyclerView = binding.recyclerviewCategories
         recyclerView.adapter = adapter
+
         // UserViewModel
         categoriesViewModel = ViewModelProvider(this).get(CategoriesViewModel::class.java)
         categoriesViewModel.readAllData.observe(viewLifecycleOwner, Observer { categories ->

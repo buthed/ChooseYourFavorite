@@ -8,11 +8,11 @@ import androidx.room.Query
 interface CategoriesDao{
 
 
-    @Query("SELECT * FROM categories")
-    fun readAllData(): LiveData<List<CategoriesEntity>>
+//    @Query("SELECT * FROM categories")
+//    fun readAllData(): LiveData<List<CategoriesEntity>>
 
-//    @Query("SELECT * FROM categories WHERE categories_type=:categoryName")
-//    fun readAllData(categoryName: String): LiveData<List<CategoriesEntity>>
+    @Query("SELECT * FROM categories WHERE categories_type=:categoryName")
+    fun readAllData(categoryName: String): LiveData<List<CategoriesEntity>>
 
 
 //    @Query("SELECT * FROM categories WHERE categories_type=:categoryName")

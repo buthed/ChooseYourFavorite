@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.chooseyoufavorite.databinding.FragmentCategoriesTypeBinding
 import com.example.chooseyoufavorite.utilities.ViewBindingFragment
 import com.example.chooseyoufavorite.viewmodel.CategoriesTypeViewModel
+import com.example.chooseyoufavorite.viewmodel.CategoriesViewModel
 
 class CategoriesTypeFragment : ViewBindingFragment<FragmentCategoriesTypeBinding>(FragmentCategoriesTypeBinding::inflate) {
 

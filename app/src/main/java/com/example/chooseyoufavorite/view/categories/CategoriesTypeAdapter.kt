@@ -9,6 +9,8 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chooseyoufavorite.R
 import com.example.chooseyoufavorite.data.room.categories.CategoriesTypeEntity
+import com.example.chooseyoufavorite.viewmodel.CategoriesTypeViewModel
+import com.example.chooseyoufavorite.viewmodel.CategoriesViewModel
 import kotlinx.android.synthetic.main.fragment_categories_item.view.*
 
 
@@ -16,6 +18,7 @@ class CategoriesTypeAdapter: RecyclerView.Adapter<CategoriesTypeAdapter.MyViewHo
 
     private val TAG = "LOGTYPE"
     private var categoriesList = emptyList<CategoriesTypeEntity>()
+    private lateinit var categoriesViewModel: CategoriesViewModel
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {}
 
@@ -33,15 +36,16 @@ class CategoriesTypeAdapter: RecyclerView.Adapter<CategoriesTypeAdapter.MyViewHo
         holder.itemView.title_txt.text = currentItem.type_of_category
 
         holder.itemView.rowLayout.setOnClickListener {
-            Log.e(TAG, "Click")
+            Log.e(TAG, currentItem.type_of_category)
             holder.itemView.rowLayout.setOnClickListener {
                 holder.itemView.findNavController().navigate(
                     R.id.navCategories,
-                    bundleOf(CategoriesFragment.categoryKey to position.toString())
+                    bundleOf(CategoriesFragment.categoryKey to currentItem.type_of_category)
                 )
             }
         }
     }
+
 
     fun setData(categories_type: List<CategoriesTypeEntity>){
         this.categoriesList = categories_type
