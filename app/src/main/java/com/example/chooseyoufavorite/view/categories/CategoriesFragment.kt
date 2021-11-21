@@ -32,7 +32,7 @@ class CategoriesFragment : ViewBindingFragment<FragmentCategoriesBinding>(Fragme
     }
 
     companion object {
-        const val categoryKey = "CATEGORY_NAME"
+        const val categoryKey = "Movies"
     }
 
 }
