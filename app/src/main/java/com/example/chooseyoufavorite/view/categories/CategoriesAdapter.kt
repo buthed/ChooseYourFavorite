@@ -13,6 +13,11 @@ import kotlinx.android.synthetic.main.fragment_categories_item.view.*
 class CategoriesAdapter: RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>() {
 
     private var categoriesList = emptyList<CategoriesEntity>()
+    private lateinit var listener: OnClickAdapterItem
+
+    public fun setListener(listener:OnClickAdapterItem){
+        this.listener = listener
+    }
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {}
 
@@ -30,11 +35,13 @@ class CategoriesAdapter: RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>() 
         holder.itemView.title_txt.text = currentItem.name
 
         holder.itemView.rowLayout.setOnClickListener {
-
-            holder.itemView.rowLayout.setOnClickListener {
-            }
+            listener.onItemClick(currentItem.name,position)
         }
+
     }
+
+
+
 
     fun setData(categories: List<CategoriesEntity>){
         this.categoriesList = categories

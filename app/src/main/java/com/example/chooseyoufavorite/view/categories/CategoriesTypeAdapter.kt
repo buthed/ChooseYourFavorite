@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.chooseyoufavorite.R
 import com.example.chooseyoufavorite.data.room.categories.CategoriesTypeEntity
 import com.example.chooseyoufavorite.viewmodel.CategoriesTypeViewModel
-import com.example.chooseyoufavorite.viewmodel.CategoriesViewModel
 import kotlinx.android.synthetic.main.fragment_categories_item.view.*
 
 
@@ -18,7 +17,7 @@ class CategoriesTypeAdapter: RecyclerView.Adapter<CategoriesTypeAdapter.MyViewHo
 
     private val TAG = "LOGTYPE"
     private var categoriesList = emptyList<CategoriesTypeEntity>()
-    private lateinit var categoriesViewModel: CategoriesViewModel
+    private lateinit var categoriesTypeViewModel: CategoriesTypeViewModel
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {}
 

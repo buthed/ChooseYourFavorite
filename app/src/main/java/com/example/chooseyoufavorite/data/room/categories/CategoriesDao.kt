@@ -12,7 +12,7 @@ interface CategoriesDao{
 //    fun readAllData(): LiveData<List<CategoriesEntity>>
 
     @Query("SELECT * FROM categories WHERE categories_type=:categoryName")
-    fun readAllData(categoryName: String): LiveData<List<CategoriesEntity>>
+    fun readAllData(categoryName: String): List<CategoriesEntity>
 
 
 //    @Query("SELECT * FROM categories WHERE categories_type=:categoryName")

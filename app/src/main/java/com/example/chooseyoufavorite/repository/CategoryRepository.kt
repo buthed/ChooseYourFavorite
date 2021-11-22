@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import com.example.chooseyoufavorite.data.room.categories.CategoriesDao
 import com.example.chooseyoufavorite.data.room.categories.CategoriesEntity
 
-class CategoryRepository(private val categoriesDao: CategoriesDao, categoryName: String)  {
+interface CategoryRepository  {
 
-    val readAllData: LiveData<List<CategoriesEntity>> = categoriesDao.readAllData(categoryName)
+    fun getAllCategoriesByType(categoryName: String): List<CategoriesEntity>
 }
