@@ -4,8 +4,6 @@ import android.app.Application
 import android.content.Context
 import androidx.room.Room
 import com.example.chooseyoufavorite.data.room.CategoriesDatabase
-import com.example.chooseyoufavorite.data.room.categories.CategoriesDao
-import com.example.chooseyoufavorite.data.room.categories.CategoriesTypeDao
 
 
 class App : Application() {
@@ -36,35 +34,5 @@ class App : Application() {
             }
         }
     }
-//    companion object {
-//        private var appInstance : App? = null
-//        private var db: CategoriesDatabase? = null
-//        private var nameDB = "ChooseYourFavoriteDB"
-//
-//        fun getDatabase():CategoriesTypeDao { //FIXME
-//            if (db == null) {
-//                val builder = Room.databaseBuilder(
-//                    appInstance!!.applicationContext,
-//                    CategoriesDatabase::class.java,
-//                    nameDB
-//                ).createFromAsset("database/ChooseYourFavorite.db")
-//                db = builder.build()
-//            }
-//            return db!!.categoriesTypeDao()
-//        }
-//        fun getDatabase1():CategoriesDao { //FIXME
-//            if (db == null) {
-//                val builder = Room.databaseBuilder(
-//                    appInstance!!.applicationContext,
-//                    CategoriesDatabase::class.java,
-//                    nameDB
-//                ).createFromAsset("database/ChooseYourFavorite.db")
-//                db = builder.build()
-//            }
-//            return db!!.categoriesDao()
-//        }
-//
-//
-//    }
 
 }

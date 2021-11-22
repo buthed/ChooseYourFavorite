@@ -12,20 +12,12 @@ import com.example.chooseyoufavorite.viewmodel.CategoriesViewModel
 
 class CategoriesFragment : ViewBindingFragment<FragmentCategoriesBinding>(FragmentCategoriesBinding::inflate), OnClickAdapterItem {
 
-
     private lateinit var categoriesViewModel: CategoriesViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.mainCategory.text = arguments?.getString(categoryKey) ?: String()
 
-
-        // Recyclerview
-//        val adapter = CategoriesAdapter()
-//        val recyclerView: RecyclerView = binding.recyclerviewCategories
-//        recyclerView.adapter = adapter
-
-        // UserViewModel
+        // UserViewModel Init
         categoriesViewModel = ViewModelProvider(this).get(CategoriesViewModel::class.java)
         categoriesViewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
         categoriesViewModel.getCategoriesByType(arguments?.getString(categoryKey) ?: String())
@@ -35,10 +27,11 @@ class CategoriesFragment : ViewBindingFragment<FragmentCategoriesBinding>(Fragme
         when (appState) {
             is AppStateCategByType.Success -> {
                 binding.recyclerviewCategories.visibility = View.VISIBLE
+                // Recyclerview Init
                 val adapter = CategoriesAdapter()
                 val recyclerView: RecyclerView = binding.recyclerviewCategories
                 recyclerView.adapter = adapter
-                adapter.setData(appState.weatherData)
+                adapter.setData(appState.categoryDataByType)
             }
             is AppStateCategByType.Loading -> {
                 binding.recyclerviewCategories.visibility = View.GONE
@@ -56,6 +49,4 @@ class CategoriesFragment : ViewBindingFragment<FragmentCategoriesBinding>(Fragme
     override fun onItemClick(name: String, position: Int) {
         categoriesViewModel.getCategoriesByType(name)
     }
-
-
 }

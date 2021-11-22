@@ -1,9 +1,7 @@
 package com.example.chooseyoufavorite.data.room
 
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.chooseyoufavorite.data.room.categories.CategoriesDao
 import com.example.chooseyoufavorite.data.room.categories.CategoriesEntity
@@ -18,5 +16,5 @@ abstract class CategoriesDatabase: RoomDatabase() {
 
     abstract fun categoriesDao(): CategoriesDao
     abstract fun categoriesTypeDao(): CategoriesTypeDao
-    
+
 }
