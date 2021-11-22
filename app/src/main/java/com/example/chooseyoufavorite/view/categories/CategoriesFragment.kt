@@ -16,7 +16,6 @@ class CategoriesFragment : ViewBindingFragment<FragmentCategoriesBinding>(Fragme
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.mainCategory.text = arguments?.getString(categoryKey) ?: String()
 
         // UserViewModel Init
         categoriesViewModel = ViewModelProvider(this).get(CategoriesViewModel::class.java)

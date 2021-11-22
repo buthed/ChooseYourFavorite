@@ -13,18 +13,11 @@ import com.example.chooseyoufavorite.viewmodel.CategoriesTypeViewModel
 class CategoriesTypeFragment
     : ViewBindingFragment<FragmentCategoriesTypeBinding>(FragmentCategoriesTypeBinding::inflate) {
 
-
     private val categoriesTypeViewModel: CategoriesTypeViewModel by lazy { ViewModelProvider(this)
         .get(CategoriesTypeViewModel::class.java) }
-//    private val adapter: CategoriesTypeAdapter by lazy { CategoriesTypeAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        //Recyclerview
-        val adapter = CategoriesTypeAdapter()
-        val recyclerView: RecyclerView = binding.recyclerviewCategoryType
-        recyclerView.adapter = adapter
 
         // UserViewModel
         categoriesTypeViewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
@@ -34,10 +27,8 @@ class CategoriesTypeFragment
     private fun renderData(appState: AppStateCateg) {
         when (appState) {
             is AppStateCateg.Success -> {
-//                binding.recyclerviewCategoryType.visibility = View.VISIBLE
-                val adapter = CategoriesTypeAdapter()
-                val recyclerView: RecyclerView = binding.recyclerviewCategoryType
-                recyclerView.adapter = adapter
+//                binding.recyclerviewCategoryType.visibility = View.VISIBLE //TODO Loading, Error
+                val adapter = initCategoriesTypeAdapter()
                 adapter.setData(appState.categoryData)
             }
 //            is AppStateCateg.Loading -> {
@@ -47,6 +38,13 @@ class CategoriesTypeFragment
 //                binding.recyclerviewCategoryType.visibility = View.VISIBLE
 //            }
         }
+    }
+
+    private fun initCategoriesTypeAdapter(): CategoriesTypeAdapter {
+        val adapter = CategoriesTypeAdapter()
+        val recyclerView: RecyclerView = binding.recyclerviewCategoryType
+        recyclerView.adapter = adapter
+        return adapter
     }
 
 }
