@@ -10,10 +10,12 @@ import com.example.chooseyoufavorite.utilities.ViewBindingFragment
 import com.example.chooseyoufavorite.viewmodel.AppStateCateg
 import com.example.chooseyoufavorite.viewmodel.CategoriesTypeViewModel
 
-class CategoriesTypeFragment : ViewBindingFragment<FragmentCategoriesTypeBinding>(FragmentCategoriesTypeBinding::inflate) {
+class CategoriesTypeFragment
+    : ViewBindingFragment<FragmentCategoriesTypeBinding>(FragmentCategoriesTypeBinding::inflate) {
 
-    //private lateinit var categoriesTypeViewModel: CategoriesTypeViewModel
-    private val categoriesTypeViewModel: CategoriesTypeViewModel by lazy { ViewModelProvider(this).get(CategoriesTypeViewModel::class.java) }
+
+    private val categoriesTypeViewModel: CategoriesTypeViewModel by lazy { ViewModelProvider(this)
+        .get(CategoriesTypeViewModel::class.java) }
 //    private val adapter: CategoriesTypeAdapter by lazy { CategoriesTypeAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -25,7 +27,6 @@ class CategoriesTypeFragment : ViewBindingFragment<FragmentCategoriesTypeBinding
         recyclerView.adapter = adapter
 
         // UserViewModel
-        //categoriesTypeViewModel = ViewModelProvider(this).get(CategoriesTypeViewModel::class.java)
         categoriesTypeViewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
         categoriesTypeViewModel.getCategories()
     }
@@ -37,7 +38,7 @@ class CategoriesTypeFragment : ViewBindingFragment<FragmentCategoriesTypeBinding
                 val adapter = CategoriesTypeAdapter()
                 val recyclerView: RecyclerView = binding.recyclerviewCategoryType
                 recyclerView.adapter = adapter
-                adapter.setData(appState.weatherData)
+                adapter.setData(appState.categoryData)
             }
 //            is AppStateCateg.Loading -> {
 //                binding.recyclerviewCategoryType.visibility = View.GONE

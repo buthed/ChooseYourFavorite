@@ -17,7 +17,6 @@ class CategoriesTypeAdapter: RecyclerView.Adapter<CategoriesTypeAdapter.MyViewHo
 
     private val TAG = "LOGTYPE"
     private var categoriesList = emptyList<CategoriesTypeEntity>()
-    private lateinit var categoriesTypeViewModel: CategoriesTypeViewModel
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {}
 
@@ -45,11 +44,8 @@ class CategoriesTypeAdapter: RecyclerView.Adapter<CategoriesTypeAdapter.MyViewHo
         }
     }
 
-
     fun setData(categories_type: List<CategoriesTypeEntity>){
         this.categoriesList = categories_type
         notifyDataSetChanged()
     }
-
-
 }

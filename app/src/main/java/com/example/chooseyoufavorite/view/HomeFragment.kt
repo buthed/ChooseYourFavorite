@@ -11,5 +11,4 @@ class HomeFragment : ViewBindingFragment<FragmentHomeBinding>(FragmentHomeBindin
             return HomeFragment()
         }
     }
-
 }

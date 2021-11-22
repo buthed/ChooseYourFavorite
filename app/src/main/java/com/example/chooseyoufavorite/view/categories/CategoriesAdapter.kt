@@ -1,6 +1,5 @@
 package com.example.chooseyoufavorite.view.categories
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,10 +13,6 @@ class CategoriesAdapter: RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>() 
 
     private var categoriesList = emptyList<CategoriesEntity>()
     private lateinit var listener: OnClickAdapterItem
-
-    public fun setListener(listener:OnClickAdapterItem){
-        this.listener = listener
-    }
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {}
 
@@ -39,9 +34,6 @@ class CategoriesAdapter: RecyclerView.Adapter<CategoriesAdapter.MyViewHolder>() 
         }
 
     }
-
-
-
 
     fun setData(categories: List<CategoriesEntity>){
         this.categoriesList = categories
