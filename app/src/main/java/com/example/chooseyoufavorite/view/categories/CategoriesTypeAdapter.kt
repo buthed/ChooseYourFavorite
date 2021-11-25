@@ -8,8 +8,7 @@ import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chooseyoufavorite.R
-import com.example.chooseyoufavorite.data.room.categories.CategoriesTypeEntity
-import com.example.chooseyoufavorite.viewmodel.CategoriesTypeViewModel
+import com.example.chooseyoufavorite.data.room.categories_fragments.CategoriesTypeEntity
 import kotlinx.android.synthetic.main.fragment_categories_item.view.*
 
 

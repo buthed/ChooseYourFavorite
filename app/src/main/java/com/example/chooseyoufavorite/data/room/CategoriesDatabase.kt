@@ -3,10 +3,10 @@ package com.example.chooseyoufavorite.data.room
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.chooseyoufavorite.data.room.categories.CategoriesDao
-import com.example.chooseyoufavorite.data.room.categories.CategoriesEntity
-import com.example.chooseyoufavorite.data.room.categories.CategoriesTypeDao
-import com.example.chooseyoufavorite.data.room.categories.CategoriesTypeEntity
+import com.example.chooseyoufavorite.data.room.categories_fragments.CategoriesDao
+import com.example.chooseyoufavorite.data.room.categories_fragments.CategoriesEntity
+import com.example.chooseyoufavorite.data.room.categories_fragments.CategoriesTypeDao
+import com.example.chooseyoufavorite.data.room.categories_fragments.CategoriesTypeEntity
 
 @Database(entities = arrayOf(
     CategoriesEntity::class,

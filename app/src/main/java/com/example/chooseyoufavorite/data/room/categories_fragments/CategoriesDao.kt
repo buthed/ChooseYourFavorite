@@ -1,4 +1,4 @@
-package com.example.chooseyoufavorite.data.room.categories
+package com.example.chooseyoufavorite.data.room.categories_fragments
 
 import androidx.room.Dao
 import androidx.room.Query

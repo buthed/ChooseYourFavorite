@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chooseyoufavorite.R
-import com.example.chooseyoufavorite.data.room.categories.CategoriesEntity
+import com.example.chooseyoufavorite.data.room.categories_fragments.CategoriesEntity
 import kotlinx.android.synthetic.main.fragment_categories_item.view.*
 
 

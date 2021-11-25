@@ -1,6 +1,6 @@
 package com.example.chooseyoufavorite.viewmodel
 
-import com.example.chooseyoufavorite.data.room.categories.CategoriesTypeEntity
+import com.example.chooseyoufavorite.data.room.categories_fragments.CategoriesTypeEntity
 
 sealed class AppStateCateg {
     data class Success(val categoryData: List<CategoriesTypeEntity>) : AppStateCateg()
