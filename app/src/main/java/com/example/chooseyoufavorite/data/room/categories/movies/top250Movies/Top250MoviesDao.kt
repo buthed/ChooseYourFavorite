@@ -6,6 +6,6 @@ import androidx.room.Query
 @Dao
 interface Top250MoviesDao{
 
-    @Query("SELECT `cinema id` FROM `Top 250 movies`")
-    fun readAllData(categoryName: String): List<Top250MoviesEntity>
+    @Query("SELECT * FROM top250Movies")
+    fun readAllData(): List<Top250MoviesEntity>
 }

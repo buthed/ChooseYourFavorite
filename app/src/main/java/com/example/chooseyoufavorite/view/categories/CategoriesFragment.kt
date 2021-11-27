@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.chooseyoufavorite.databinding.FragmentCategoriesBinding
 import com.example.chooseyoufavorite.utilities.ViewBindingFragment
 import com.example.chooseyoufavorite.viewmodel.AppStateCategByType
-import com.example.chooseyoufavorite.viewmodel.CategoriesTypeViewModel
 import com.example.chooseyoufavorite.viewmodel.CategoriesViewModel
 
 class CategoriesFragment : ViewBindingFragment<FragmentCategoriesBinding>(FragmentCategoriesBinding::inflate), OnClickAdapterItem {

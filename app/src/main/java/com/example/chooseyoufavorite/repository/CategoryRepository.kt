@@ -5,5 +5,5 @@ import com.example.chooseyoufavorite.data.room.categories_fragments.CategoriesEn
 
 interface CategoryRepository  { //TODO unite 2 repositories
 
-    fun getAllCategoriesByType(categoryName: String): List<CategoriesEntity>
+    fun getAllCategoriesByType(categories_id: String): List<CategoriesEntity>
 }

@@ -13,11 +13,12 @@ import com.example.chooseyoufavorite.data.room.categories_fragments.CategoriesTy
 @Database(entities = arrayOf(
     CategoriesEntity::class,
     CategoriesTypeEntity::class,
-    ),version = 1)
+    Top250MoviesEntity::class,
+    ),version = 1, exportSchema = true)
 abstract class CategoriesDatabase: RoomDatabase() {
 
     abstract fun categoriesDao(): CategoriesDao
     abstract fun categoriesTypeDao(): CategoriesTypeDao
-    abstract fun Top250MoviesDao(): Top250MoviesDao
+    abstract fun top250MoviesDao(): Top250MoviesDao
 
 }

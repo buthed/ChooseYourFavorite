@@ -13,4 +13,6 @@ import androidx.room.PrimaryKey
     )])
 data class CategoriesEntity(@PrimaryKey(autoGenerate = true) val id:Int,
                             @ColumnInfo(name = "categories_type") val categories_type: String,
+                            @ColumnInfo(name = "categories_id") val categoriesId: String,
                             @ColumnInfo(name = "name") val name: String)
+

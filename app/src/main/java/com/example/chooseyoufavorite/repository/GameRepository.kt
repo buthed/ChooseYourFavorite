@@ -5,5 +5,5 @@ import com.example.chooseyoufavorite.data.room.categories.movies.top250Movies.To
 
 interface GameRepository {
 
-    fun getTop250Movies(categoryName: String) : List<Top250MoviesEntity>
+    fun getTop250Movies() : List<Top250MoviesEntity>
 }

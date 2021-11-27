@@ -6,7 +6,7 @@ import com.example.chooseyoufavorite.data.room.categories_fragments.CategoriesEn
 
 class CategoryRepositoryImpl(private val categoriesDatabase: CategoriesDatabase) : CategoryRepository  {
 
-    override fun getAllCategoriesByType(categoryName: String): List<CategoriesEntity> {
-        return categoriesDatabase.categoriesDao().readAllData(categoryName)
+    override fun getAllCategoriesByType(categories_id: String): List<CategoriesEntity> {
+        return categoriesDatabase.categoriesDao().readAllData(categories_id)
     }
 }
