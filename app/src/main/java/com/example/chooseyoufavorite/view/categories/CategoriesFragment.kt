@@ -12,13 +12,13 @@ import com.example.chooseyoufavorite.viewmodel.CategoriesViewModel
 
 class CategoriesFragment : ViewBindingFragment<FragmentCategoriesBinding>(FragmentCategoriesBinding::inflate), OnClickAdapterItem {
 
-    private lateinit var categoriesViewModel: CategoriesViewModel
+    private val categoriesViewModel: CategoriesViewModel by lazy { ViewModelProvider(this)
+        .get(CategoriesViewModel::class.java) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         // UserViewModel Init
-        categoriesViewModel = ViewModelProvider(this).get(CategoriesViewModel::class.java)
         categoriesViewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
         categoriesViewModel.getCategoriesByType(arguments?.getString(categoryKey) ?: String())
     }

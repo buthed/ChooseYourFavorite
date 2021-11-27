@@ -6,6 +6,6 @@ import androidx.room.Query
 @Dao
 interface CategoriesDao{
 
-    @Query("SELECT * FROM categories WHERE categories_type=:categoryName")
-    fun readAllData(categoryName: String): List<CategoriesEntity>
+    @Query("SELECT * FROM categories WHERE categories_id=:categories_id")
+    fun readAllData(categories_id: String): List<CategoriesEntity>
 }
